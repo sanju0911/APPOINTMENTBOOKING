@@ -46,8 +46,9 @@ function handleEditRow(id) {
 
 updateBtn.onclick = function () {
   const updateNameInput = document.querySelector("#update-name-input");
+  const updateEmailInput = document.querySelector("#update-email-input");
 
-  console.log(updateNameInput);
+  // console.log(updateNameInput);
 
   fetch("http://localhost:8005/update", {
     method: "PATCH",
@@ -57,6 +58,7 @@ updateBtn.onclick = function () {
     body: JSON.stringify({
       id: updateNameInput.dataset.id,
       name: updateNameInput.value,
+      email: updateEmailInput.value,
     }),
   })
     .then((response) => response.json())
@@ -76,6 +78,7 @@ addBtn.onclick = function () {
   const email = emailInput.value;
   nameInput.value = "";
   emailInput.value = "";
+  location.reload();
 
   fetch("http://localhost:8005/insert", {
     headers: {
