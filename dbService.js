@@ -87,13 +87,13 @@ class DbService {
     }
   }
 
-  async updateNameById(id, name) {
+  async updateNameById(id, name, email) {
     try {
       id = parseInt(id, 10);
       const response = await new Promise((resolve, reject) => {
-        const query = "UPDATE names SET name = ? WHERE id = ?";
+        const query = "UPDATE names SET name = ?, email = ? WHERE id = ?;";
 
-        connection.query(query, [name, id], (err, result) => {
+        connection.query(query, [name, email, id], (err, result) => {
           if (err) reject(new Error(err.message));
           resolve(result.affectedRows);
         });

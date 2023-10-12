@@ -39,10 +39,10 @@ app.get("/getAll", (request, response) => {
 
 // update
 app.patch("/update", (request, response) => {
-  const { id, name } = request.body;
+  const { id, name, email } = request.body;
   const db = dbService.getDbServiceInstance();
 
-  const result = db.updateNameById(id, name);
+  const result = db.updateNameById(id, name, email);
 
   result
     .then((data) => response.json({ success: data }))
